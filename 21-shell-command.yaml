@@ -1,0 +1,15 @@
+- name: shell vs command 
+  hosts: local
+  connection: local
+  tasks:
+  - name: execute ls command
+    ansible.builtin.command: ls -ltr >/tmp/output.txt #this command is not working for pipes and redirectories
+    ansible.builtin.shell: ls -ltr >/tmp/output.txt #now its working
+
+  - name: execute ls command in command module
+    ansible.builtin.command: ls -ltr # if you want to execute command modules use registers to store the output
+    #ansible.builtin.command: ls -ltrsss #checking success state 
+    register: command_result #
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "{{ conmmand_result }}"
