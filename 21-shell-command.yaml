@@ -9,7 +9,8 @@
   - name: execute ls command in command module
     ansible.builtin.command: ls -ltr # if you want to execute command modules use registers to store the output
     #ansible.builtin.command: ls -ltrsss #checking success state 
-    register: command_result #
+    register: command_result 
+    
   - name: print the output
     ansible.builtin.debug:
       msg: "{{ conmmand_result }}"
